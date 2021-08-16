@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FileRenamer_WPF.ViewModels
+namespace FileRenamer_WPF.Views
 {
     /// <summary>
-    /// Interaction logic for FilesRenamerView.xaml
+    /// Interaction logic for FileRenamerView.xaml
     /// </summary>
-    public partial class FilesRenamerView : UserControl
+    public partial class FileRenamerView : UserControl
     {
-        public FilesRenamerView()
+        public FileRenamerView()
         {
             InitializeComponent();
         }

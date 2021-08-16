@@ -9,6 +9,10 @@ namespace FileRenamer_WPF.ViewModels
 {
     internal class ShellViewModel : Conductor<Screen>
     {
-
+        public ShellViewModel()
+        {
+            
+            ActivateItem(IoC.Get<FileRenamerViewModel>());
+        }
     }
 }

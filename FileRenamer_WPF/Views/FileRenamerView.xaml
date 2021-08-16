@@ -1,12 +1,11 @@
-﻿<UserControl x:Class="FileRenamer_WPF.ViewModels.FilesRenamerView"
+﻿<UserControl x:Class="FileRenamer_WPF.Views.FileRenamerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FileRenamer_WPF.ViewModels"
+             xmlns:local="clr-namespace:FileRenamer_WPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="White">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,5 +20,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <TextBlock Text="Choose Folder"
+                   FontSize="30"
+                   Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="ChooseFolder"
+                Content="..."
+                FontSize="50"
+                Grid.Row="1" Grid.Column="2"/>
     </Grid>
 </UserControl>
