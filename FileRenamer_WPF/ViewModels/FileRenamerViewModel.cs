@@ -10,6 +10,8 @@ namespace FileRenamer_WPF.ViewModels
 {
     internal class FileRenamerViewModel : Caliburn.Micro.Screen
     {
+
+
         public FileRenamerViewModel()
         {
 
@@ -20,13 +22,15 @@ namespace FileRenamer_WPF.ViewModels
         public void ChooseFolder()
         {
 
-            var folder = new FolderBrowserDialog();
+            var folder = IoC.Get<FolderBrowserDialog>();
             var path = "";
             if (folder.ShowDialog() == DialogResult.OK)
             {
                 path = folder.SelectedPath;
             }
         }
+        public string AlbumName { get; set; }
+        public string SearchPattern { get; set; }
 
 
 

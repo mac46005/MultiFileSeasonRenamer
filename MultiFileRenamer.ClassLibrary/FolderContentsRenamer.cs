@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace MultiFileRenamer.ClassLibrary
 {
-    public class MultiFileRenamer
+    public class FolderContentsRenamer
     {
         private string _folderPath = "";
         private string _albumName = "";
         private string _searchPattern = "";
-        public MultiFileRenamer(string folderPath,string albumName,string searchPattern)
+        public FolderContentsRenamer(string folderPath,string albumName,string searchPattern)
         {
             _folderPath = folderPath;
             _albumName = albumName;
@@ -40,7 +40,8 @@ namespace MultiFileRenamer.ClassLibrary
         {
             for (int i = 0; i < ListFiles.Count; i++)
             {
-                File.Copy(ListFiles[i],$"{_albumName + (i + 1)}") ;
+                File.Copy(ListFiles[i],$"{_albumName + (i + 1)}");
+                File.Delete(ListFiles[i]);
             }
         }
 

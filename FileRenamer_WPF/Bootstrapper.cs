@@ -1,11 +1,13 @@
 ﻿using Caliburn.Micro;
 using FileRenamer_WPF.ViewModels;
+using MultiFileRenamer.ClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace FileRenamer_WPF
 {
@@ -21,7 +23,9 @@ namespace FileRenamer_WPF
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
-
+            _container
+                .PerRequest<FolderBrowserDialog, FolderBrowserDialog>()
+                .PerRequest<FolderContentsRenamer, FolderContentsRenamer>();
 
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)
