@@ -37,7 +37,7 @@ namespace FileRenamer_WPF.ViewModels
             _folderContentsRenamer.AlbumName = AlbumName;
             _folderContentsRenamer.SearchPattern = SearchPattern;
             _folderContentsRenamer.RenameSpecificExtensionFiles();
-            if (((int)_folderContentsRenamer.FileRenamerResult) == 4)
+            if (((int)_folderContentsRenamer.FileRenamerResult) == 3)
             {
                 MessageBox.Show("Successfully Renamed Files.");
             }
@@ -47,7 +47,7 @@ namespace FileRenamer_WPF.ViewModels
             }
 
 
-            
+            Reset();
 
         }
 
