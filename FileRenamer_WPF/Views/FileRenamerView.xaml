@@ -10,6 +10,7 @@
              d:DesignHeight="600" d:DesignWidth="800">
     <UserControl.Resources>
         <converters:RenamerResultConverter x:Key="ValueConverter"/>
+        <converters:ListCountToBoolValueConverter x:Key="ListCountToBoolValueConverter"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -65,14 +66,14 @@
                    FontSize="30"
                    Grid.Row="6" Grid.Column="2"/>
         <TextBox x:Name="AlbumName"
-                 FontSize="30"
+                 FontSize="30" IsEnabled="{Binding Files,Converter={StaticResource ListCountToBoolValueConverter}}"
                  Grid.Row="6" Grid.Column="3"/>
 
         <TextBlock Text="Search Pattern:"
                    FontSize="30"
                    Grid.Row="7" Grid.Column="2"/>
         <TextBox x:Name="SearchPattern"
-                 FontSize="30"
+                 FontSize="30" IsEnabled="{Binding Files,Converter={StaticResource ListCountToBoolValueConverter}}"
                  Grid.Row="7" Grid.Column="3"/>
 
         <Button Content="Rename"

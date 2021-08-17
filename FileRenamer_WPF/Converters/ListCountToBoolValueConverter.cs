@@ -13,7 +13,7 @@ namespace FileRenamer_WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             List<string> listStrings = (List<string>)value;
-            if (listStrings.Count == 0)
+            if (listStrings == null || listStrings.Count == 0)
             {
                 return false;
             }
