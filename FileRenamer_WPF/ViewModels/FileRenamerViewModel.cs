@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MultiFileRenamer.ClassLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace FileRenamer_WPF.ViewModels
 {
     internal class FileRenamerViewModel : Caliburn.Micro.Screen
     {
+        private FolderContentsRenamer _folderContentsRenamer;
 
-
-        public FileRenamerViewModel()
+        public FileRenamerViewModel(FolderContentsRenamer folderContentsRenamer)
         {
-
+            _folderContentsRenamer = folderContentsRenamer;
         }
 
 
@@ -28,12 +29,17 @@ namespace FileRenamer_WPF.ViewModels
             {
                 path = folder.SelectedPath;
             }
+            _folderContentsRenamer.FolderPath = path;
+            FolderPath = path;
         }
         public string FolderPath { get; set; }
         public string AlbumName { get; set; }
         public string SearchPattern { get; set; }
 
 
+        public void Rename()
+        {
 
+        }
     }
 }

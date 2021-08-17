@@ -9,41 +9,81 @@ namespace MultiFileRenamer.ClassLibrary
 {
     public class FolderContentsRenamer
     {
-        private string _folderPath = "";
-        private string _albumName = "";
-        private string _searchPattern = "";
-        public FolderContentsRenamer(string folderPath, string albumName, string searchPattern)
+        public FolderContentsRenamer()
         {
-            _folderPath = folderPath;
-            _albumName = albumName;
-            _searchPattern = searchPattern;
 
-            GetListOfFileStringsInPath();
-            RenameFiles();
+        }
+        public FileRenamerResult FileRenamerResult { get; set; }
+
+        private string _folderPath = "";
+        public string FolderPath
+        {
+            get { return _folderPath; }
+            set
+            {
+                if (Directory.Exists(value))
+                {
+                    _folderPath = value;
+                    FileRenamerResult = FileRenamerResult.FolderExists;
+                }
+                else
+                {
+                    _folderPath = "";
+                    FileRenamerResult = FileRenamerResult.FolderNotExists;
+                }
+            }
+        }
+
+        public string AlbumName { get; set; }
+        public string SearchPattern { get; set; }
+
+
+
+        private List<string> _listFiles;
+        private List<string> ListFiles
+        {
+            get { return _listFiles; }
+            set
+            {
+                if (value.Count > 0)
+                {
+                    _listFiles = value;
+                    GetListOfFileStringsInPath();
+                }
+                else
+                {
+                    _listFiles = null;
+                }
+            }
         }
 
 
-        private List<string> ListFiles { get; set; } = new List<string>();
+
 
         private void GetListOfFileStringsInPath()
         {
-            foreach (string file in Directory.GetFiles(_folderPath, _searchPattern))
+            foreach (string file in Directory.GetFiles(_folderPath, SearchPattern))
             {
                 ListFiles.Add(file);
             }
         }
-        private void RenameFiles()
+
+
+
+
+        public void RenameFiles()
         {
             for (int i = 0; i < ListFiles.Count; i++)
             {
                 try
                 {
-                    File.Copy(ListFiles[i], $"{_albumName + (i + 1)}");
+                    File.Copy(ListFiles[i], $"{AlbumName + (i + 1)}");
                     File.Delete(ListFiles[i]);
+                    FileRenamerResult = FileRenamerResult.SuccessfullyRenamed;
                 }
                 catch (IOException ex)
                 {
-                    throw;
+                    FileRenamerResult = FileRenamerResult.UnsuccessfullyRenamed;
                 }
             }
         }

@@ -8,7 +8,9 @@ namespace MultiFileRenamer.ClassLibrary
 {
     public enum FileRenamerResult
     {
-        Successful,
-        Unsuccessful
+        FolderExists,
+        FolderNotExists,
+        SuccessfullyRenamed,
+        UnsuccessfullyRenamed
     }
 }
