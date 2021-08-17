@@ -88,6 +88,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Converters\ListCountToBoolValueConverter.cs" />
     <Compile Include="Converters\RenamerResultConverter.cs" />
     <Compile Include="ViewModels\FileRenamerViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />

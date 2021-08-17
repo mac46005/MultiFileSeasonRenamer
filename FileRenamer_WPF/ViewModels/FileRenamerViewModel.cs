@@ -30,8 +30,7 @@ namespace FileRenamer_WPF.ViewModels
         public List<string> Files { get; set; }
         public string FolderPath { get; set; }
         public string AlbumName { get; set; }
-        public string SearchPattern { get; set; }
-
+        public string SearchPattern { get; set; } 
 
         public void Rename()
         {

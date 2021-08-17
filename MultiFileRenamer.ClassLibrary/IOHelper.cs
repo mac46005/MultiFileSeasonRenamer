@@ -50,8 +50,8 @@ namespace MultiFileRenamer.ClassLibrary
         {
             try
             {
-                string[] fileNames = { };
                 var filePaths = Directory.GetFiles(directory);
+                string[] fileNames = new string[filePaths.Length - 1];
                 for (int i = 0; i < filePaths.Length - 1; i++)
                 {
                     FileInfo fileInfo = new FileInfo(filePaths[i]);
