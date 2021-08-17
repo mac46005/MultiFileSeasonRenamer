@@ -52,7 +52,7 @@ namespace MultiFileRenamer.ClassLibrary
             {
                 string[] fileNames = { };
                 var filePaths = Directory.GetFiles(directory);
-                for (int i = 0; i < filePaths.Length; i++)
+                for (int i = 0; i < filePaths.Length - 1; i++)
                 {
                     FileInfo fileInfo = new FileInfo(filePaths[i]);
                     fileNames[i] = fileInfo.Name;

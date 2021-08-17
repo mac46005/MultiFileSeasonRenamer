@@ -16,7 +16,6 @@ namespace MultiFileRenamer.ClassLibrary
         public string AlbumName { get; set; }
         public string SearchPattern { get; set; }
         public List<string> AllShortNameFolderContents { get; set; }
-        public List<string> AllFullNameFolderContents { get; set; }
 
 
         public FileRenamerResult SetFolderPath()

@@ -24,6 +24,7 @@ namespace FileRenamer_WPF.ViewModels
         {
             FolderResult = _folderContentsRenamer.SetFolderPath();
             FolderPath = _folderContentsRenamer.FolderPath;
+            Files = _folderContentsRenamer.AllShortNameFolderContents;
         }
         public FileRenamerResult FolderResult { get; set; } = FileRenamerResult.FolderNotPicked;
         public List<string> Files { get; set; }
