@@ -23,12 +23,7 @@ namespace FileRenamer_WPF.ViewModels
         public void ChooseFolder()
         {
 
-            var folder = IoC.Get<FolderBrowserDialog>();
-            var path = "";
-            if (folder.ShowDialog() == DialogResult.OK)
-            {
-                path = folder.SelectedPath;
-            }
+            string path = IoC.Get<IOHelper>().FolderPath();
             _folderContentsRenamer.FolderPath = path;
             FolderPath = path;
             FolderResult = _folderContentsRenamer.FileRenamerResult;

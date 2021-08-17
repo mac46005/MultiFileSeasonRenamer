@@ -25,7 +25,8 @@ namespace FileRenamer_WPF
                 .Singleton<IEventAggregator, EventAggregator>();
             _container
                 .PerRequest<FolderBrowserDialog, FolderBrowserDialog>()
-                .PerRequest<FolderContentsRenamer, FolderContentsRenamer>();
+                .PerRequest<FolderContentsRenamer, FolderContentsRenamer>()
+                .PerRequest<IOHelper, IOHelper>();
 
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)
