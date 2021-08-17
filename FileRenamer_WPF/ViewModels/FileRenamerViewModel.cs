@@ -34,7 +34,33 @@ namespace FileRenamer_WPF.ViewModels
 
         public void Rename()
         {
+            _folderContentsRenamer.AlbumName = AlbumName;
+            _folderContentsRenamer.SearchPattern = SearchPattern;
+            _folderContentsRenamer.RenameSpecificExtensionFiles();
+            if (((int)_folderContentsRenamer.FileRenamerResult) == 4)
+            {
+                MessageBox.Show("Successfully Renamed Files.");
+            }
+            else
+            {
+                MessageBox.Show("Unsuccessfully renamed files. Please try again!!");
+            }
+
+
+            
 
         }
+
+
+        private void Reset()
+        {
+            _folderContentsRenamer = IoC.Get<FolderContentsRenamer>();
+            FolderPath = null;
+            AlbumName = null;
+            SearchPattern = null;
+            Files = null;
+
+        }
+
     }
 }
