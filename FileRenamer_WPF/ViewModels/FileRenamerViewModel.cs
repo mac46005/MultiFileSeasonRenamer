@@ -29,6 +29,7 @@ namespace FileRenamer_WPF.ViewModels
                 path = folder.SelectedPath;
             }
         }
+        public string FolderPath { get; set; }
         public string AlbumName { get; set; }
         public string SearchPattern { get; set; }
 

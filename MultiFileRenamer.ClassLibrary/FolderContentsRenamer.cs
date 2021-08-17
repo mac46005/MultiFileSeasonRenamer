@@ -12,18 +12,14 @@ namespace MultiFileRenamer.ClassLibrary
         private string _folderPath = "";
         private string _albumName = "";
         private string _searchPattern = "";
-        public FolderContentsRenamer(string folderPath,string albumName,string searchPattern)
+        public FolderContentsRenamer(string folderPath, string albumName, string searchPattern)
         {
             _folderPath = folderPath;
             _albumName = albumName;
             _searchPattern = searchPattern;
 
-
-
-
             GetListOfFileStringsInPath();
             RenameFiles();
-
         }
 
 
@@ -40,8 +36,15 @@ namespace MultiFileRenamer.ClassLibrary
         {
             for (int i = 0; i < ListFiles.Count; i++)
             {
-                File.Copy(ListFiles[i],$"{_albumName + (i + 1)}");
-                File.Delete(ListFiles[i]);
+                try
+                {
+                    File.Copy(ListFiles[i], $"{_albumName + (i + 1)}");
+                    File.Delete(ListFiles[i]);
+                }
+                catch (IOException ex)
+                {
+                    throw;
+                }
             }
         }
 

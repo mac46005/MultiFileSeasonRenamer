@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FileRenamer_WPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -19,7 +19,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <TextBlock Text="Multi File Renamer"
+                   FontSize="40"
+                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
         <TextBlock Text="Choose Folder"
                    FontSize="30"
                    Grid.Row="1" Grid.Column="1"/>
@@ -27,5 +34,39 @@
                 Content="..."
                 FontSize="50"
                 Grid.Row="1" Grid.Column="2"/>
+
+        <TextBlock Text="Folder Path:"
+                   FontSize="30"
+                   Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="{Binding FolderPath}"
+                   FontSize="30"
+                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <TextBlock Text="{Binding FolderStatus}"
+                   FontSize="30"
+                   Grid.Row="3" Grid.Column="1"/>
+        <ListView ItemsSource="{Binding Files}"
+                  Grid.Row="3" Grid.RowSpan="3" 
+                  Grid.Column="0" Grid.ColumnSpan="4">
+
+        </ListView>
+
+        <TextBlock Text="Album Name:"
+                   FontSize="30"
+                   Grid.Row="6" Grid.Column="1"/>
+        <TextBox x:Name="AlbumName"
+                 FontSize="30"
+                 Grid.Row="6" Grid.Column="2"/>
+
+        <TextBlock Text="Search Pattern:"
+                   FontSize="30"
+                   Grid.Row="7" Grid.Column="1"/>
+        <TextBox x:Name="SearchPattern"
+                 FontSize="30"
+                 Grid.Row="7" Grid.Column="2"/>
+
+        <Button Content="Rename"
+                FontSize="30"
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"/>
+
     </Grid>
 </UserControl>
