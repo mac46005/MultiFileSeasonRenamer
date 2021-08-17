@@ -63,6 +63,9 @@ namespace MultiFileRenamer.ClassLibrary
             {
 
                 throw;
+            }catch(Exception ex)
+            {
+                throw;
             }
 
         }
@@ -88,11 +91,11 @@ namespace MultiFileRenamer.ClassLibrary
         }
 
 
-        public static void CopyAndDeleteOriginalFile(string filePath, string newFileName)
+        public static void CopyAndDeleteOriginalFile(string filePath, string newFileName,string folderPath)
         {
             try
             {
-                File.Copy(filePath, newFileName);
+                File.Copy(filePath, folderPath + newFileName);
                 DeleteFile(filePath);
             }
             catch (IOException ex)

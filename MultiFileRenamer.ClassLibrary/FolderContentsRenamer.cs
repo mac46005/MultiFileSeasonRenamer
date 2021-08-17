@@ -47,7 +47,7 @@ namespace MultiFileRenamer.ClassLibrary
             {
                 try
                 {
-                    CopyAndDeleteOriginalFile(extensionSpecificFiles[i], $"{AlbumName + (i + 1)}");
+                    CopyAndDeleteOriginalFile(extensionSpecificFiles[i], $"{AlbumName + (i + 1)}",FolderPath);
                     FileRenamerResult = FileRenamerResult.SuccessfullyRenamed;
                 }
                 catch (IOException ex)

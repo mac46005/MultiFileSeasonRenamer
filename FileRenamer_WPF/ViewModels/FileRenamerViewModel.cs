@@ -22,9 +22,16 @@ namespace FileRenamer_WPF.ViewModels
 
         public void ChooseFolder()
         {
-            FolderResult = _folderContentsRenamer.SetFolderPath();
-            FolderPath = _folderContentsRenamer.FolderPath;
-            Files = _folderContentsRenamer.AllShortNameFolderContents;
+            try
+            {
+                FolderResult = _folderContentsRenamer.SetFolderPath();
+                FolderPath = _folderContentsRenamer.FolderPath;
+                Files = _folderContentsRenamer.AllShortNameFolderContents;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         public FileRenamerResult FolderResult { get; set; } = FileRenamerResult.FolderNotPicked;
         public List<string> Files { get; set; }
@@ -34,20 +41,27 @@ namespace FileRenamer_WPF.ViewModels
 
         public void Rename()
         {
-            _folderContentsRenamer.AlbumName = AlbumName;
-            _folderContentsRenamer.SearchPattern = SearchPattern;
-            _folderContentsRenamer.RenameSpecificExtensionFiles();
-            if (((int)_folderContentsRenamer.FileRenamerResult) == 3)
+            try
             {
-                MessageBox.Show("Successfully Renamed Files.");
-            }
-            else
-            {
-                MessageBox.Show("Unsuccessfully renamed files. Please try again!!");
-            }
+                _folderContentsRenamer.AlbumName = AlbumName;
+                _folderContentsRenamer.SearchPattern = SearchPattern;
+                _folderContentsRenamer.RenameSpecificExtensionFiles();
+                if (((int)_folderContentsRenamer.FileRenamerResult) == 3)
+                {
+                    MessageBox.Show("Successfully Renamed Files.");
+                }
+                else
+                {
+                    MessageBox.Show("Unsuccessfully renamed files. Please try again!!");
+                }
 
 
-            Reset();
+                Reset();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 

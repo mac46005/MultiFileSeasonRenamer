@@ -77,6 +77,7 @@
                  Grid.Row="7" Grid.Column="3"/>
 
         <Button Content="Rename"
+                x:Name="Rename"
                 FontSize="30"
                 Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2"/>
 
