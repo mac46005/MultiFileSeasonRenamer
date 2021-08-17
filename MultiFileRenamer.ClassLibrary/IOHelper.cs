@@ -9,15 +9,17 @@ namespace MultiFileRenamer.ClassLibrary
 {
     public class IOHelper
     {
-        public string FolderPath()
+        public (string,bool) FolderPath()
         {
             var folder = new FolderBrowserDialog();
-            var path = "";
+            string path = "";
+            bool doesExists = false;
             if (folder.ShowDialog() == DialogResult.OK)
             {
                 path = folder.SelectedPath;
+                doesExists = true;
             }
-            return path;
+            return (path,doesExists);
         }
     }
 }
