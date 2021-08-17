@@ -22,13 +22,11 @@ namespace FileRenamer_WPF.ViewModels
 
         public void ChooseFolder()
         {
-
-            (string path,bool exists) = IoC.Get<IOHelper>().FolderPath();
-            _folderContentsRenamer.FolderPath = path;
-            FolderPath = path;
-            FolderResult = _folderContentsRenamer.FileRenamerResult;
+            FolderResult = _folderContentsRenamer.SetFolderPath();
+            FolderPath = _folderContentsRenamer.FolderPath;
         }
         public FileRenamerResult FolderResult { get; set; } = FileRenamerResult.FolderNotPicked;
+        public List<string> Files { get; set; }
         public string FolderPath { get; set; }
         public string AlbumName { get; set; }
         public string SearchPattern { get; set; }

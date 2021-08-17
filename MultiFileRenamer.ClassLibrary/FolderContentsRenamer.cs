@@ -4,81 +4,51 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MultiFileRenamer.ClassLibrary.IOHelper;
 
 namespace MultiFileRenamer.ClassLibrary
 {
     public class FolderContentsRenamer
     {
-        public FolderContentsRenamer()
-        {
-
-        }
         public FileRenamerResult FileRenamerResult { get; set; }
-
-        private string _folderPath = "";
-        public string FolderPath
-        {
-            get { return _folderPath; }
-            set
-            {
-                if (Directory.Exists(value))
-                {
-                    _folderPath = value;
-                    FileRenamerResult = FileRenamerResult.FolderExists;
-                }
-                else
-                {
-                    _folderPath = "";
-                    FileRenamerResult = FileRenamerResult.FolderNotExists;
-                }
-            }
-        }
+        public string FolderPath { get; set; }
 
         public string AlbumName { get; set; }
         public string SearchPattern { get; set; }
+        public List<string> AllShortNameFolderContents { get; set; }
+        public List<string> AllFullNameFolderContents { get; set; }
 
 
-
-        private List<string> _listFiles;
-        private List<string> ListFiles
+        public FileRenamerResult SetFolderPath()
         {
-            get { return _listFiles; }
-            set
+            FileRenamerResult result = FileRenamerResult.FolderNotExists;
+            (string folderPath,bool exists) = GetFolderPath();
+            if (exists == true)
             {
-                if (value.Count > 0)
-                {
-                    _listFiles = value;
-                    GetListOfFileStringsInPath();
-                }
-                else
-                {
-                    _listFiles = null;
-                }
+                FolderPath = folderPath;
+                SetAllShortNameFolderContents();
+                result = FileRenamerResult.FolderExists;
             }
+            return result;
+        }
+
+
+        private void SetAllShortNameFolderContents()
+        {
+            AllShortNameFolderContents.AddRange(FolderContentShortName(FolderPath));
         }
 
 
 
 
-        private void GetListOfFileStringsInPath()
+        public void RenameSpecificExtensionFiles()
         {
-            foreach (string file in Directory.GetFiles(_folderPath, SearchPattern))
-            {
-                ListFiles.Add(file);
-            }
-        }
-
-
-
-
-        public void RenameFiles()
-        {
-            for (int i = 0; i < ListFiles.Count; i++)
+            var extensionSpecificFiles = AllFolderContentFullFilePath(FolderPath, SearchPattern);
+            for (int i = 0; i < extensionSpecificFiles.Length; i++)
             {
                 try
                 {
-                    File.Copy(ListFiles[i], $"{AlbumName + (i + 1)}");
-                    File.Delete(ListFiles[i]);
+                    CopyAndDeleteOriginalFile(extensionSpecificFiles[i], $"{AlbumName + (i + 1)}");
                     FileRenamerResult = FileRenamerResult.SuccessfullyRenamed;
                 }
                 catch (IOException ex)
