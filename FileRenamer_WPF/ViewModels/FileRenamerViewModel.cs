@@ -31,7 +31,9 @@ namespace FileRenamer_WPF.ViewModels
             }
             _folderContentsRenamer.FolderPath = path;
             FolderPath = path;
+            FolderResult = _folderContentsRenamer.FileRenamerResult;
         }
+        public FileRenamerResult FolderResult { get; set; } = FileRenamerResult.FolderNotPicked;
         public string FolderPath { get; set; }
         public string AlbumName { get; set; }
         public string SearchPattern { get; set; }

@@ -10,6 +10,7 @@ namespace MultiFileRenamer.ClassLibrary
     {
         FolderExists,
         FolderNotExists,
+        FolderNotPicked,
         SuccessfullyRenamed,
         UnsuccessfullyRenamed
     }
