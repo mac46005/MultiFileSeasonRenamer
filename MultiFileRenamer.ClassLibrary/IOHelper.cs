@@ -63,9 +63,9 @@ namespace MultiFileRenamer.ClassLibrary
             {
 
                 throw;
-            }catch(Exception ex)
+            }catch(ArithmeticException ex)
             {
-                throw;
+                throw new Exception("No Files in directory.");
             }
 
         }
@@ -95,7 +95,9 @@ namespace MultiFileRenamer.ClassLibrary
         {
             try
             {
-                File.Copy(filePath, folderPath + newFileName);
+                FileInfo fileInfo = new FileInfo(filePath);
+                var extension = fileInfo.Extension;
+                File.Copy(filePath, folderPath + @"\" + newFileName+ extension);
                 DeleteFile(filePath);
             }
             catch (IOException ex)
